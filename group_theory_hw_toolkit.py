@@ -1,6 +1,7 @@
 # group theory home work
 # a toolbox to find class of each element, subgroups and inverent subgroups
-# this script is developed for triavil calculations in homeworks, and is not tested or optimized
+# this script is developed for trivial calculations in homeworks, and is not tested or optimized
+# for production propers please refer to packages such as pygroup
 # contact kefeiwu@outlook.com for questions, bugs, suggestions and improvements
 
 import numpy as np
@@ -150,7 +151,7 @@ def find_all_subgroup(mtable, output_format=1): # find all subgroups of a given 
         
         return subgroup_list_symble
 
-def tell_subgroup_inveriant(mtable, elist): # tell if a subgroup is inveriant, 
+def tell_subgroup_invariant(mtable, elist): # tell if a subgroup is invariant, 
     isgroup = tell_subgroup(mtable,elist)
     if isgroup==0:
         print('WARNING! NOT A GROUP')
@@ -173,27 +174,27 @@ def tell_subgroup_inveriant(mtable, elist): # tell if a subgroup is inveriant,
 
 
 def find_all_inverent_subgroup(mtable, output_format=1): # find all inverent subgroup of a table, output in the format of index(1) or symble(0)
-    inveriant_list = []
+    invariant_list = []
     all_subgroup = find_all_subgroup(mtable, output_format=1)
     for i in all_subgroup:
-        if tell_subgroup_inveriant(mtable,i)==1:
-            inveriant_list.append(i)
+        if tell_subgroup_invariant(mtable,i)==1:
+            invariant_list.append(i)
     
     if output_format==1:
-        return inveriant_list
+        return invariant_list
     else:
-        inveriant_subgroup_list_symble = []
-        for i in inveriant_list:
+        invariant_subgroup_list_symble = []
+        for i in invariant_list:
             b0 = []
             for j in i:
                 b0.append(element_table[j])
-            inveriant_subgroup_list_symble.append(b0)
-        return inveriant_subgroup_list_symble
+            invariant_subgroup_list_symble.append(b0)
+        return invariant_subgroup_list_symble
 
 
 
 print('All subgroup(s) \n', find_all_subgroup(table, output_format=0))
-print('All inveriant subgroup(s) \n', find_all_inverent_subgroup(table, output_format=0))
+print('All invariant subgroup(s) \n', find_all_inverent_subgroup(table, output_format=0))
 
         
 '''
