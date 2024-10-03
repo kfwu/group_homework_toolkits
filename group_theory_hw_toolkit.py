@@ -112,7 +112,7 @@ def tell_subgroup(mtable, elist): #is a collect (elist) a group, elist supports 
 
 
 
-def find_all_subgroup(mtable, output_format=1): # find all subgroups of a given multi_table, output_format can be either index (output_format=1) or symble(output_format=0)
+def find_all_subgroup(mtable, output_format=1): # find all subgroups of a given multi_table, output_format can be either index (output_format=1) or symbol(output_format=0)
     #generate all possible collections of group
     # since E must be in one subgroup, the remining elements (n-1) have 2^(n-1) posible ways
     c_num = int(2**(element_lens-1))
@@ -142,14 +142,14 @@ def find_all_subgroup(mtable, output_format=1): # find all subgroups of a given 
     if output_format==1:
         return subgroup_list
     else:
-        subgroup_list_symble = []
+        subgroup_list_symbol = []
         for i in subgroup_list:
             b0 = []
             for j in i:
                 b0.append(element_table[j])
-            subgroup_list_symble.append(b0)
+            subgroup_list_symbol.append(b0)
         
-        return subgroup_list_symble
+        return subgroup_list_symbol
 
 def tell_subgroup_invariant(mtable, elist): # tell if a subgroup is invariant, 
     isgroup = tell_subgroup(mtable,elist)
@@ -173,7 +173,7 @@ def tell_subgroup_invariant(mtable, elist): # tell if a subgroup is invariant,
         return 0
 
 
-def find_all_inverent_subgroup(mtable, output_format=1): # find all inverent subgroup of a table, output in the format of index(1) or symble(0)
+def find_all_inverent_subgroup(mtable, output_format=1): # find all inverent subgroup of a table, output in the format of index(1) or symbol(0)
     invariant_list = []
     all_subgroup = find_all_subgroup(mtable, output_format=1)
     for i in all_subgroup:
@@ -183,13 +183,13 @@ def find_all_inverent_subgroup(mtable, output_format=1): # find all inverent sub
     if output_format==1:
         return invariant_list
     else:
-        invariant_subgroup_list_symble = []
+        invariant_subgroup_list_symbol = []
         for i in invariant_list:
             b0 = []
             for j in i:
                 b0.append(element_table[j])
-            invariant_subgroup_list_symble.append(b0)
-        return invariant_subgroup_list_symble
+            invariant_subgroup_list_symbol.append(b0)
+        return invariant_subgroup_list_symbol
 
 
 
@@ -199,9 +199,9 @@ print('All invariant subgroup(s) \n', find_all_inverent_subgroup(table, output_f
         
 '''
 for i in range(element_lens):
-    e_symble = element_table[i]
-    class_e = findclass(table,e_symble)
-    print('the class of element '+e_symble+' is' + str(class_e))     
+    e_symbol = element_table[i]
+    class_e = findclass(table,e_symbol)
+    print('the class of element '+e_symbol+' is' + str(class_e))     
 
 '''
 
