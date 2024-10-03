@@ -1,7 +1,7 @@
 # group_homework_toolkits
 A toolkits for group theory homeworks, save time from triavil calculations.
 
-Functions include finding the class of a elements, finding all subgroups and all inveriant subgroups of a given (permutation) groups
+Functions include finding the class of a element, finding all subgroups and all inveriant subgroups of a given (permutation) group
 
 Minimium input is Table = *your_permutation_group_in_list
 
