@@ -1,7 +1,6 @@
 # group theory home work
 # a toolbox to find class of each element, subgroups and inverent subgroups
 # this script is developed for triavil calculations in homeworks, and is not tested or optimized
-# for production propers please refer to packages such as pygroup
 # contact kefeiwu@outlook.com for questions, bugs, suggestions and improvements
 
 import numpy as np
