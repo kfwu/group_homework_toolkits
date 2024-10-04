@@ -112,9 +112,10 @@ def tell_subgroup(mtable, elist): #is a collect (elist) a group, elist supports 
 
 
 
-def find_all_subgroup(mtable, output_format=1): # find all subgroups of a given multi_table, output_format can be either index (output_format=1) or symbol(output_format=0)
+def find_all_subgroup_outdated(mtable, output_format=1): # find all subgroups of a given multi_table, output_format can be either index (output_format=1) or symbol(output_format=0)
     #generate all possible collections of group
     # since E must be in one subgroup, the remining elements (n-1) have 2^(n-1) posible ways
+    # a faster way is to use Lagrange's theorem, and this method is now ourdated
     c_num = int(2**(element_lens-1))
     subgroup_list = []
     for i in range(c_num):
@@ -150,6 +151,52 @@ def find_all_subgroup(mtable, output_format=1): # find all subgroups of a given 
             subgroup_list_symbol.append(b0)
         
         return subgroup_list_symbol
+
+def find_all_subgroup(mtable, output_format=1): # find all subgroups of a given multi_table, output_format can be either index (output_format=1) or symbol(output_format=0)
+    #generate all possible collections of group
+    # since E must be in one subgroup, the remining elements (n-1) have 2^(n-1) posible ways
+    # using Lagrange's theorem to speed it up, above 3.7 times faster when testing D4 group
+    c_num = int(2**(element_lens-1))
+    subgroup_list = []
+    for i in range(c_num):
+        bin_i = bin(i) #use the binary number of i to indicate a possible way of collection
+        tempi = str(bin_i)
+        tempi = tempi[2:len(tempi)]
+        
+        while len(tempi)<(element_lens-1):
+            tempi='0'+tempi
+        tempi = '1'+tempi #Every (sub)group must include Identity
+        element_number = tempi.count('1')
+
+
+        
+
+
+        if element_lens%element_number==0:
+            temp_collection = []
+
+            for i in range(element_lens):
+                if tempi[i]=='1':
+                    temp_collection.append((i))
+
+            a = tell_subgroup(mtable, temp_collection)
+            if a==1:
+                subgroup_list.append(temp_collection)
+
+
+    if output_format==1:
+        return subgroup_list
+    else:
+        subgroup_list_symbol = []
+        for i in subgroup_list:
+            b0 = []
+            for j in i:
+                b0.append(element_table[j])
+            subgroup_list_symbol.append(b0)
+        
+        return subgroup_list_symbol
+
+
 
 def tell_subgroup_invariant(mtable, elist): # tell if a subgroup is invariant, 
     isgroup = tell_subgroup(mtable,elist)
