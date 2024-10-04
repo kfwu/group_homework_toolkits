@@ -4,6 +4,12 @@
 # for production propers please refer to packages such as pygroup
 # contact kefeiwu@outlook.com for questions, bugs, suggestions and improvements
 
+
+# now outdated, please refer to group_theory_hw_toolkit.py for newer version where faster ways of
+# finding subgroup(s) using  Lagrange's theorem is implemented
+# the imput format is the same
+
+
 import numpy as np
 
 element_table = ['e','d','f','a','b','c'] # sepsifing a element table, order matters
